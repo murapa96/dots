@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = usr/lib/modules/*/vmlinuz
+Target = boot/
+
+[Action]
+Description = Signing kernel with Machine Owner Key for Secure Boot
+When = PostTransaction
+Exec = /etc/pacman.d/hooks/scripts/kernel_sign_script.sh
+Depends = sbsigntools
+Depends = findutils
+Depends = grep
